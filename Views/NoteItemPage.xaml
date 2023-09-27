@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Multus.Views.NoteItemPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Multus.Models"
+    x:DataType="models:NoteItem">
+    <ContentPage.Content >
+        <ScrollView>
+            <VerticalStackLayout Padding="20"
+                                 Spacing="10"
+                                 VerticalOptions="StartAndExpand">
+                <Label Text="Name" />
+                <Entry Text="{Binding Name}" />
+                <Label Text="Notes" />
+                <Entry Text="{Binding Note}" />
+                <Label Text="Done" />
+                <Switch IsToggled="{Binding Done}" />
+                <Button Text="Save"
+                        Clicked="OnSaveClicked" />
+                <Button Text="Delete"
+                        Clicked="OnDeleteClicked" />
+                <Button Text="Cancel"
+                        Clicked="OnCancelClicked" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
