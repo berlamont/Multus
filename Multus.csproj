@@ -6,13 +6,12 @@
     <!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
     <OutputType>Exe</OutputType>
     <RootNamespace>Multus</RootNamespace>
-    <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- Display name -->
     <ApplicationTitle>Multus</ApplicationTitle>
     <!-- App Identifier -->
-    <ApplicationId>com.companyname.multus</ApplicationId>
+    <ApplicationId>com.mwm.multus</ApplicationId>
     <ApplicationIdGuid>79dc0193-867f-4f31-95b3-6a363760d31a</ApplicationIdGuid>
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -39,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
   <ItemGroup>
