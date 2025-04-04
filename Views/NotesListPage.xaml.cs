@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Multus.Data;
 using Multus.Models;
+using Microsoft.Maui.ApplicationModel;
 
 namespace Multus.Views;
 
