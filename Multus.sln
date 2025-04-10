@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.35906.104
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multus", "Multus.csproj", "{A735311B-9B14-B4BB-C9FA-8F5108C2B304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multus.Tests", "..\Multus.Tests\Multus.Tests.csproj", "{82C9E441-29C8-6B25-61DD-C89729D4BDD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A735311B-9B14-B4BB-C9FA-8F5108C2B304}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{82C9E441-29C8-6B25-61DD-C89729D4BDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C9E441-29C8-6B25-61DD-C89729D4BDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C9E441-29C8-6B25-61DD-C89729D4BDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C9E441-29C8-6B25-61DD-C89729D4BDD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB07B9E0-34BE-4B2C-9550-E0E19264C7AA}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+	x:Class="Multus.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:Multus"
+	xmlns:views="clr-namespace:Multus.Views">
+
+	<TabBar>
+		<ShellContent
+			Title="Main"
+			Icon="iconblank.png"
+			ContentTemplate="{DataTemplate views:MainPage}" />
+		<ShellContent
+			Title="Crypto"
+			Icon="iconlistdetail.png"
+			ContentTemplate="{DataTemplate views:CryptoPage}" />
+		<ShellContent
+			Title="Notes"
+			Icon="iconlistdetail.png"
+			ContentTemplate="{DataTemplate views:NotesPage}" />
+		<ShellContent
+			Title="Todo"
+			Icon="iconblank.png"
+			ContentTemplate="{DataTemplate views:TodoPage}" />
+	</TabBar>
+</Shell>
