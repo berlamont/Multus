@@ -16,4 +16,14 @@ public partial class TodoPage : ContentPage
             viewModel.OnAppearing();
         }
     }
+
+    void CollectionView_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+	    throw new NotImplementedException();
+    }
+
+    void OnItemAdded(object? sender, EventArgs e)
+    {
+	    throw new NotImplementedException();
+    }
 }

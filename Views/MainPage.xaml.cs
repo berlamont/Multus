@@ -52,7 +52,7 @@ public partial class MainPage : ContentPage
         mathOperator = pressed;
     }
 
-    private void LockNumberValue(string text)
+    void LockNumberValue(string text)
     {
         double number;
         if (double.TryParse(text, out number))

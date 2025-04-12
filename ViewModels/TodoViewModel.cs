@@ -44,4 +44,8 @@ public partial class TodoViewModel : BaseViewModel
     //        ["Item"] = item
     //    });
     //}
+    public void OnAppearing()
+    {
+        throw new NotImplementedException();
+    }
 }

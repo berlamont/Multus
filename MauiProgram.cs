@@ -20,7 +20,7 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MainPage>();
 
-		builder.Services.AddTransient<SampleDataService>();
+		builder.Services.AddTransient<ItemService>();
 		builder.Services.AddTransient<CryptoDetailViewModel>();
 		builder.Services.AddTransient<CryptoDetailPage>();
 
@@ -28,7 +28,7 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<CryptoPage>();
 
-		builder.Services.AddTransient<SampleDataService>();
+		builder.Services.AddTransient<ItemService>();
 		builder.Services.AddTransient<NotesDetailViewModel>();
 		builder.Services.AddTransient<NotesDetailPage>();
 

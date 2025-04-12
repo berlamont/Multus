@@ -21,7 +21,7 @@
             HorizontalTextAlignment="End"
             LineBreakMode="NoWrap"
             Text=""
-            TextColor="{StaticResource Light}"
+            TextColor="{StaticResource White}"
             VerticalTextAlignment="Start" />
 
         <Label
@@ -32,13 +32,13 @@
             HorizontalTextAlignment="End"
             LineBreakMode="NoWrap"
             Text="0"
-            TextColor="{StaticResource Light}"
+            TextColor="{StaticResource White}"
             VerticalTextAlignment="End" />
 
         <BoxView
             Grid.Row="0"
             Grid.ColumnSpan="4"
-            BackgroundColor="{StaticResource LightGray}"
+            BackgroundColor="{StaticResource  Gray400}"
             HeightRequest="1"
             VerticalOptions="End" />
 

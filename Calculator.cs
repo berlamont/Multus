@@ -53,3 +53,4 @@ namespace Multus
             return strValue;
         }
     }
+}

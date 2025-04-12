@@ -2,7 +2,7 @@
 
 public partial class NotesViewModel : BaseViewModel
 {
-	//readonly SampleDataService dataService;
+	readonly ItemService dataService;
 
 	[ObservableProperty]
 	bool isRefreshing;
@@ -10,7 +10,7 @@ public partial class NotesViewModel : BaseViewModel
 	[ObservableProperty]
 	ObservableCollection<Item>? items;
 
-	public NotesViewModel(SampleDataService service)
+	public NotesViewModel(ItemService service)
 	{
 		dataService = service;
 	}

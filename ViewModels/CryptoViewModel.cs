@@ -2,7 +2,7 @@
 
 public partial class CryptoViewModel : BaseViewModel
 {
-	//readonly SampleDataService dataService;
+	//readonly ItemService dataService;
 
 	//[ObservableProperty]
 	//bool isRefreshing;
@@ -10,7 +10,7 @@ public partial class CryptoViewModel : BaseViewModel
 	//[ObservableProperty]
 	//ObservableCollection<Item>? items;
 
-	//public CryptoViewModel(SampleDataService service)
+	//public CryptoViewModel(ItemService service)
 	//{
 	//	dataService = service;
 	//}
@@ -59,4 +59,8 @@ public partial class CryptoViewModel : BaseViewModel
 	//		{ "Item", item }
 	//	});
 	//}
+	public async Task LoadDataAsync()
+	{
+		throw new NotImplementedException();
+	}
 }
