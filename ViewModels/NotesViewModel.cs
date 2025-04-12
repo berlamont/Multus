@@ -2,13 +2,13 @@
 
 public partial class NotesViewModel : BaseViewModel
 {
-	readonly SampleDataService dataService;
+	//readonly SampleDataService dataService;
 
 	[ObservableProperty]
 	bool isRefreshing;
 
 	[ObservableProperty]
-	ObservableCollection<SampleItem>? items;
+	ObservableCollection<Item>? items;
 
 	public NotesViewModel(SampleDataService service)
 	{
@@ -48,11 +48,11 @@ public partial class NotesViewModel : BaseViewModel
 
 	public async Task LoadDataAsync()
 	{
-		Items = new ObservableCollection<SampleItem>(await dataService.GetItems());
+		Items = new ObservableCollection<Item>(await dataService.GetItems());
 	}
 
 	[RelayCommand]
-	private async Task GoToDetails(SampleItem item)
+	private async Task GoToDetails(Item item)
 	{
 		await Shell.Current.GoToAsync(nameof(NotesDetailPage), true, new Dictionary<string, object>
 		{

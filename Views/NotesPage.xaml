@@ -12,7 +12,7 @@
 			RemainingItemsThreshold="10"
 			RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
 			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="m:SampleItem">
+				<DataTemplate x:DataType="m:Item">
 					<Border
 						Margin="4"
 						Padding="12"
@@ -22,7 +22,7 @@
 						<Border.GestureRecognizers>
 							<TapGestureRecognizer
 								Command="{Binding x:DataType=vm:NotesViewModel, Source={RelativeSource AncestorType={x:Type vm:NotesViewModel}}, Path=GoToDetailsCommand}"
-								CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type m:SampleItem}}, Path=.}" />
+								CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type m:Item}}, Path=.}" />
 						</Border.GestureRecognizers>
 						<Label
 							FontSize="Large"
