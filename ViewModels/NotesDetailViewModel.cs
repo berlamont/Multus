@@ -1,8 +1,18 @@
 ﻿namespace Multus.ViewModels;
 
-//[QueryProperty(nameof(Item), "Item")]
+[QueryProperty(nameof(Item), "Item")]
 public partial class NotesDetailViewModel : BaseViewModel
 {
-	//[ObservableProperty]
-	//Item? item;
+	[ObservableProperty]
+	Item? item;
+
+	public NotesDetailViewModel()
+	{
+		
+	}
+
+
+
+
+
 }

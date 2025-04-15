@@ -2,7 +2,7 @@
 
 namespace Multus.Database
 {
-    public class MultusDb
+    public abstract class MultusDb
     {
         SQLiteAsyncConnection database;
 
@@ -12,45 +12,34 @@ namespace Multus.Database
                 return;
 
             database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+
+            // Dynamically create tables for all types
             await database.CreateTableAsync<TodoItem>();
             await database.CreateTableAsync<NoteItem>();
         }
 
-        public async Task<List<TodoItem>> GetTodoItemsAsync()
+        public async Task<List<T>> GetItemsAsync<T>() where T : new()
         {
             await Init();
-            return await database.Table<TodoItem>().ToListAsync();
+            return await database.Table<T>().ToListAsync();
         }
 
-        public async Task<List<TodoItem>> GetTodoItemsNotDoneAsync()
+        public async Task<T> GetItemAsync<T>(int id) where T : new()
         {
             await Init();
-            return await database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
-
-            // SQL queries are also possible
-            //return await database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
+            return await database.FindAsync<T>(id);
         }
 
-        public async Task<TodoItem> GetTodoItemAsync(int id)
+        public async Task<int> SaveItemAsync<T>(T item) where T : new()
         {
             await Init();
-            return await database.Table<TodoItem>().Where(i => i.Id == id).FirstOrDefaultAsync();
-        }
-
-        public async Task<int> SaveTodoItemAsync(TodoItem item)
-        {
-            await Init();
-            if (item.Id != 0)
-            {
+            var idProperty = typeof(T).GetProperty("Id");
+            if (idProperty != null && (int)idProperty.GetValue(item) != 0)
                 return await database.UpdateAsync(item);
-            }
-            else
-            {
-                return await database.InsertAsync(item);
-            }
+            return await database.InsertAsync(item);
         }
 
-        public async Task<int> DeleteTodoItemAsync(TodoItem item)
+        public async Task<int> DeleteItemAsync<T>(T item) where T : new()
         {
             await Init();
             return await database.DeleteAsync(item);
