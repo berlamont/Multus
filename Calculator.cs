@@ -7,50 +7,20 @@ using System.Threading.Tasks;
 namespace Multus
 {
 
-    public static class Calculator
+    internal static class Calculator
     {
-        public static double Calculate(double value1, double value2, string mathOperator)
+        internal static double Calculate(double d1, double d2, string ch)
         {
-            double result = 0;
-
-            switch (mathOperator)
+            return ch switch
             {
-                case "÷":
-                    result = value1 / value2;
-                    break;
-                case "×":
-                    result = value1 * value2;
-                    break;
-                case "+":
-                    result = value1 + value2;
-                    break;
-                case "-":
-                    result = value1 - value2;
-                    break;
-            }
-
-            return result;
+                "%" => d1 % d2,
+                "/" => d1 / d2,
+                "x" => d1 * d2,
+                "-" => d1 - d2,
+                "+" => d1 + d2,
+                _ => 0
+            };
         }
-    }
 
-    public static class DoubleExtensions
-    {
-        public static string ToTrimmedString(this double target, string decimalFormat)
-        {
-            string strValue = target.ToString(decimalFormat); //Get the stock string
-
-            //If there is a decimal point present
-            if (strValue.Contains("."))
-            {
-                //Remove all trailing zeros
-                strValue = strValue.TrimEnd('0');
-
-                //If all we are left with is a decimal point
-                if (strValue.EndsWith(".")) //then remove it
-                    strValue = strValue.TrimEnd('.');
-            }
-
-            return strValue;
-        }
     }
 }

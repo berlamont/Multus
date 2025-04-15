@@ -5,151 +5,223 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:Multus.ViewModels"
     x:DataType="vm:MainViewModel">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="{StaticResource White}" />
+        </Style>
+    </ContentPage.Resources>
 
     <Grid
-        Padding="16"
-        ColumnDefinitions="*,*,*,*"
-        ColumnSpacing="2"
-        RowDefinitions="2*,*,*,*,*,*"
-        RowSpacing="2">
+        Padding="5,0"
+        BackgroundColor="Black"
+        ColumnSpacing="1"
+        RowSpacing="1">
 
-        <Label
-            x:Name="CurrentCalculation"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+
+        <Label x:Name="historyView"
             Grid.Row="0"
+            Grid.RowSpan="1"
             Grid.ColumnSpan="4"
-            FontSize="22"
-            HorizontalTextAlignment="End"
-            LineBreakMode="NoWrap"
-            Text=""
-            TextColor="{StaticResource White}"
-            VerticalTextAlignment="Start" />
-
-        <Label
-            x:Name="resultText"
-            Grid.ColumnSpan="4"
+            BackgroundColor="Black"
             FontAttributes="Bold"
-            FontSize="64"
+            FontSize="28"
             HorizontalTextAlignment="End"
             LineBreakMode="NoWrap"
-            Text="0"
             TextColor="{StaticResource White}"
-            VerticalTextAlignment="End" />
+            VerticalTextAlignment="Center" />
 
-        <BoxView
-            Grid.Row="0"
+        <Label x:Name="resultView"
+            Grid.Row="1"
+            Grid.RowSpan="1"
             Grid.ColumnSpan="4"
-            BackgroundColor="{StaticResource  Gray400}"
-            HeightRequest="1"
-            VerticalOptions="End" />
-
+            BackgroundColor="Black"
+            FontAttributes="Bold"
+            FontSize="36"
+            HorizontalTextAlignment="End"
+            LineBreakMode="NoWrap"
+            Text="Result"
+            TextColor="{StaticResource White}"
+            VerticalTextAlignment="Center" />
         <Button
-            Grid.Row="1"
+            Grid.Row="2"
+            Grid.RowSpan="1"
             Grid.Column="0"
-            Clicked="OnClear"
-            Text="C" />
-        <Button
-            Grid.Row="1"
-            Grid.Column="1"
-            Clicked="OnNegative"
-            Text="+/-" />
-        <Button
-            Grid.Row="1"
-            Grid.Column="2"
-            Clicked="OnPercentage"
-            Text="%" />
+            Grid.ColumnSpan="2"
+            BackgroundColor="DarkRed"
+            Clicked="Clear"
+            CornerRadius="30"
+            FontSize="28"
+            Text="C"
+            TextColor="{StaticResource White}" />
 
         <Button
             Grid.Row="2"
-            Grid.Column="0"
-            Clicked="OnSelectNumber"
-            Text="7" />
-        <Button
-            Grid.Row="2"
-            Grid.Column="1"
-            Clicked="OnSelectNumber"
-            Text="8" />
-        <Button
-            Grid.Row="2"
             Grid.Column="2"
-            Clicked="OnSelectNumber"
-            Text="9" />
-
-        <Button
-            Grid.Row="3"
-            Grid.Column="0"
-            Clicked="OnSelectNumber"
-            Text="4" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="1"
-            Clicked="OnSelectNumber"
-            Text="5" />
-        <Button
-            Grid.Row="3"
-            Grid.Column="2"
-            Clicked="OnSelectNumber"
-            Text="6" />
-
-        <Button
-            Grid.Row="4"
-            Grid.Column="0"
-            Clicked="OnSelectNumber"
-            Text="1" />
-        <Button
-            Grid.Row="4"
-            Grid.Column="1"
-            Clicked="OnSelectNumber"
-            Text="2" />
-        <Button
-            Grid.Row="4"
-            Grid.Column="2"
-            Clicked="OnSelectNumber"
-            Text="3" />
-
-        <Button
-            Grid.Row="5"
-            Grid.Column="0"
-            Clicked="OnSelectNumber"
-            Text="00" />
-        <Button
-            Grid.Row="5"
-            Grid.Column="1"
-            Clicked="OnSelectNumber"
-            Text="0" />
-        <Button
-            Grid.Row="5"
-            Grid.Column="2"
-            Clicked="OnSelectNumber"
-            Text="." />
-
-        <Button
-            Grid.Row="1"
-            Grid.Column="3"
-            Clicked="OnSelectOperator"
-            Text="÷" />
+            Clicked="OperatorSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="%"
+            TextColor="{StaticResource White}" />
         <Button
             Grid.Row="2"
             Grid.Column="3"
-            Clicked="OnSelectOperator"
-            Text="×" />
+            Clicked="OperatorSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="/"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="3"
+            Grid.RowSpan="1"
+            Grid.Column="0"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="7"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="3"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="8"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="9"
+            TextColor="{StaticResource White}" />
         <Button
             Grid.Row="3"
             Grid.Column="3"
-            Clicked="OnSelectOperator"
-            Text="-" />
+            Clicked="OperatorSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="x"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="4"
+            Grid.RowSpan="1"
+            Grid.Column="0"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="4"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="4"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="5"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="6"
+            TextColor="{StaticResource White}" />
         <Button
             Grid.Row="4"
             Grid.Column="3"
-            Clicked="OnSelectOperator"
-            Text="+" />
-
-
-
+            Clicked="OperatorSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="-"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="5"
+            Grid.RowSpan="1"
+            Grid.Column="0"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="1"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="5"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="2"
+            TextColor="{StaticResource White}" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="2"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="3"
+            TextColor="{StaticResource White}" />
         <Button
             Grid.Row="5"
             Grid.Column="3"
-            Clicked="OnCalculate"
-            Text="=" />
+            Clicked="OperatorSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="+"
+            TextColor="{StaticResource White}" />
+
+        <Button
+            Grid.Row="6"
+            Grid.RowSpan="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="NumberSelect"
+            CornerRadius="30"
+            FontSize="28"
+            Text="0"
+            TextColor="{StaticResource White}" />
+
+
+        <Button
+            Grid.Row="6"
+            Grid.Column="3"
+            Clicked="Calculate"
+            CornerRadius="30"
+            FontSize="28"
+            Text="="
+            TextColor="{StaticResource White}" />
 
     </Grid>
 </ContentPage>

@@ -1,125 +1,63 @@
-﻿namespace Multus.Views;
+﻿using System.Text.RegularExpressions;
+using static System.Text.RegularExpressions.Regex;
+
+namespace Multus.Views;
 
 public partial class MainPage : ContentPage
 {
+    string? val1;
+    string? val2;
+    string omath, press;
+
     public MainPage()
     {
         InitializeComponent();
-        OnClear(this, null);
-
     }
 
-    string currentEntry = "";
-    int currentState = 1;
-    string mathOperator;
-    double firstNumber, secondNumber;
-    string decimalFormat = "N0";
-
-
-
-    void OnSelectNumber(object sender, EventArgs e)
+    void Clear(object sender, EventArgs e)
     {
-
-        Button button = (Button)sender;
-        string pressed = button.Text;
-
-        currentEntry += pressed;
-
-        if ((resultText.Text == "0" && pressed == "0")
-            || (currentEntry.Length <= 1 && pressed != "0")
-            || currentState < 0)
-        {
-            resultText.Text = "";
-            if (currentState < 0)
-                currentState *= -1;
-        }
-
-        if (pressed == "." && decimalFormat != "N2")
-        {
-            decimalFormat = "N2";
-        }
-
-        resultText.Text += pressed;
+        val1 = null;
+        val2 = null;
+        historyView.Text = "";
+        resultView.Text = "0";
     }
 
-    void OnSelectOperator(object sender, EventArgs e)
+    void NumberSelect(object sender, EventArgs e)
     {
-        LockNumberValue(resultText.Text);
+        if (sender is not Button button || string.IsNullOrWhiteSpace(button.Text)) 
+            return;
 
-        currentState = -2;
-        Button button = (Button)sender;
-        string pressed = button.Text;
-        mathOperator = pressed;
+        press = button.Text;
+
+
+        historyView.Text += press;
+        resultView.Text = press;
+
+        if (!IsMatch(historyView.Text, @"[^0-9]"))
+            val1 += press;
+        else
+            val2 += press;
     }
 
-    void LockNumberValue(string text)
+    void OperatorSelect(object sender, EventArgs e)
     {
-        double number;
-        if (double.TryParse(text, out number))
-        {
-            if (currentState == 1)
-            {
-                firstNumber = number;
-            }
-            else
-            {
-                secondNumber = number;
-            }
+        var button = sender as Button;
 
-            currentEntry = string.Empty;
-        }
+        omath = button.Text;
+        resultView.Text = omath;
+        historyView.Text += omath;
     }
 
-    void OnClear(object sender, EventArgs e)
+    void Calculate(object sender, EventArgs e)
     {
-        firstNumber = 0;
-        secondNumber = 0;
-        currentState = 1;
-        decimalFormat = "N0";
-        resultText.Text = "0";
-        currentEntry = string.Empty;
-    }
+        historyView.Text = "=" + resultView.Text;
 
-    void OnCalculate(object sender, EventArgs e)
-    {
-        if (currentState == 2)
-        {
-            if (secondNumber == 0)
-                LockNumberValue(resultText.Text);
+        resultView.Text = Calculator.Calculate(Convert.ToDouble(val1), Convert.ToDouble(val2), omath).ToString();
 
-            double result = Calculator.Calculate(firstNumber, secondNumber, mathOperator);
+        historyView.Text = resultView.Text;
 
-            CurrentCalculation.Text = $"{firstNumber} {mathOperator} {secondNumber}";
+        val1 = resultView.Text;
+        val2 = "";
 
-            resultText.Text = result.ToTrimmedString(decimalFormat);
-            firstNumber = result;
-            secondNumber = 0;
-            currentState = -1;
-            currentEntry = string.Empty;
-        }
-    }
-
-    void OnNegative(object sender, EventArgs e)
-    {
-        if (currentState == 1)
-        {
-            secondNumber = -1;
-            mathOperator = "×";
-            currentState = 2;
-            OnCalculate(this, null);
-        }
-    }
-
-    void OnPercentage(object sender, EventArgs e)
-    {
-        if (currentState == 1)
-        {
-            LockNumberValue(resultText.Text);
-            decimalFormat = "N2";
-            secondNumber = 0.01;
-            mathOperator = "×";
-            currentState = 2;
-            OnCalculate(this, null);
-        }
     }
 }
