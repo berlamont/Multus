@@ -1,8 +1,12 @@
-﻿namespace Multus.ViewModels;
+﻿using Multus.Database;
+
+namespace Multus.ViewModels;
 
 public partial class NotesViewModel : BaseViewModel
 {
 	readonly ItemService dataService;
+
+	readonly MultusDb _db;
 
 	[ObservableProperty]
 	bool isRefreshing;
@@ -10,9 +14,10 @@ public partial class NotesViewModel : BaseViewModel
 	[ObservableProperty]
 	ObservableCollection<Item>? items;
 
-	public NotesViewModel(ItemService service)
+	public NotesViewModel()
 	{
-		dataService = service;
+		_db = new MultusDb();
+        dataService = new NoteItemService(_db);
 	}
 
 	[RelayCommand]

@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Multus.Services
 {
-    public class ItemService
+    public abstract class ItemService
     {
-        public async Task<IEnumerable<Item>> GetItems()
+        public virtual Task<IEnumerable<Item>> GetItems()
         {
-            throw new NotImplementedException();
+            // This method should be overridden in derived classes to provide the actual implementation
+            throw new NotImplementedException("GetItems method must be implemented in derived classes.");
+
         }
+
+        public abstract Task<Item> GetItem(int id);
     }
 }
